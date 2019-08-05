@@ -1,0 +1,37 @@
+server:
+  port: 8003
+#mybatis
+mybatis:
+  mapper-locations: classpath:mapper/*Mapper.xml
+  type-aliases-package: com.lzp.springcloud.pojo
+spring:
+  application:
+    name: microservicecloud-dept
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: org.gjt.mm.mysql.Driver
+    url: jdbc:mysql://localhost:3306/study
+    username: root
+    password: root
+    dbcp2:
+      min-idle: 5
+      initial-size: 5
+      max-total: 5
+      max-wait-millis: 200
+
+#客户端注册进eureka服务列表
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka7001.com:7001/eureka/,http://eureka7002.com:7002/eureka/,http://eureka7003.com:7003/eureka/
+  instance:
+    #服务实例名称修改
+    instance-id: study-springcloud-dept8003
+    #访问路径显示IP地址
+    prefer-ip-address: true
+
+info:
+  app.name: study-springcloud-micoservices
+  company.name: www.lzp.com
+  build.artifactId: ${project.artifactId}
+  build.version: ${project.version}
